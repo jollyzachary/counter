@@ -1,38 +1,97 @@
 .App {
   text-align: center;
+  padding: 300px;
+  background: url("./background.png") no-repeat center center fixed;
+  background-size: cover;
+  /* Apply an opaque layer to make the text more readable */
+  position: relative;
+  z-index: 1;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.counters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.counter {
+  border: 2px solid #004d00; /* Darker green border for a forest feel */
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 20px;
+  font-family: "Arial", sans-serif;
+  background-color: #e6ffe6; /* Light green background for contrast */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 200px;
+  position: relative;
+  z-index: 2; /* Ensure the counters are above the opaque layer */
 }
 
-.App-link {
-  color: #61dafb;
+.incremental-number,
+.tally {
+  font-size: 24px;
+  color: #003300; /* Deep green for text */
+  margin: 10px 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.controls button {
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #006600; /* Forest green for buttons */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin: 5px;
+}
+
+.controls button:hover {
+  background-color: #004d00; /* Darker green on hover */
+}
+
+.label-input {
+  margin-bottom: 10px;
+  padding: 5px;
+  font-size: 14px;
+  border: 2px solid #004d00; /* Dark green border */
+  border-radius: 4px;
+  width: calc(100% - 10px);
+  color: #003300; /* Deep green text */
+}
+
+.set-number {
+  border: 2px solid #004d00; /* Match the counter border */
+  border-radius: 8px; /* Match the counter border-radius */
+  background-color: #e6ffe6; /* Match the counter background color */
+  padding: 20px; /* Provide some padding inside the container */
+  margin: 40px auto; /* Center the box and add some margin on the top */
+  width: fit-content; /* Adjust the width to fit its content or set a specific width */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Match the counter shadow */
+  display: inline-block; /* Make the container inline-block if you want it to fit the content width */
+  font-family: "Arial", sans-serif; /* Ensure font consistency */
+}
+
+.set-number input {
+  margin: 0 10px; /* Adjust input spacing */
+  padding: 8px; /* Padding inside the input for better appearance */
+  font-size: 16px; /* Match the font size with counters */
+  border: 1px solid #004d00; /* Slightly lighter border for the input for distinction */
+  border-radius: 4px; /* Rounded corners for the input */
+  color: #003300; /* Text color to match the theme */
+  background-color: #ffffff; /* Background color for the input */
 }
